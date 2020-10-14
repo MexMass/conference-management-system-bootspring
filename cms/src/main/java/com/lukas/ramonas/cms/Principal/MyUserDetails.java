@@ -1,16 +1,10 @@
 package com.lukas.ramonas.cms.Principal;
 
 import com.lukas.ramonas.cms.Model.User;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class MyUserDetails implements UserDetails {
     private final User user;
@@ -21,8 +15,8 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return null;
-//        return user.getAuthorities();
     }
 
     @Override

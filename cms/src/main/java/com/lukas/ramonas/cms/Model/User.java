@@ -13,7 +13,7 @@ import java.util.List;
  *******************************************/
 @Entity(name = "User")
 @Table(name = "user_table")
-public class User implements GrantedAuthority {
+public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer user_id;
@@ -29,9 +29,6 @@ public class User implements GrantedAuthority {
 
     private String role;
 
-//    @OneToMany(orphanRemoval=true,  mappedBy="User", fetch = FetchType.EAGER)
-//    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-//    private List<Role> roles;
     private boolean confirmed;
 
     public Integer getId() {
@@ -70,13 +67,6 @@ public class User implements GrantedAuthority {
         this.email = email;
     }
 
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return this.roles;
-//    }
-//
-//    public void setAuthorities(List authorities) {
-//        this.roles = authorities;
-//    }
 
     public Boolean getConfirmed() {
         return confirmed;
@@ -86,9 +76,4 @@ public class User implements GrantedAuthority {
         this.confirmed = confirmed;
     }
 
-
-    @Override
-    public String getAuthority() {
-        return this.role;
-    }
 }
