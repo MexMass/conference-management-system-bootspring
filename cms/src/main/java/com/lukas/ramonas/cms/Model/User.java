@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer user_id;
+    private int user_id;
 
     private String name;
 
@@ -28,14 +28,14 @@ public class User {
 
     private boolean confirmed;
 
-    @ManyToMany
-    @JoinTable(
-            name = "role_table",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"))
-    private Collection<Role> roles;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "role_table",
+//            joinColumns = @JoinColumn(
+//                    name = "user_id", referencedColumnName = "user_id"),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "role_id", referencedColumnName = "role_id"))
+//    private Collection<Role> roles;
 
 /*******************************************
 * Setters and getters

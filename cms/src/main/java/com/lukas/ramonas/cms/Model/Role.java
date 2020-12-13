@@ -1,30 +1,30 @@
-package com.lukas.ramonas.cms.Model;
-
-import javax.persistence.*;
-import java.util.Collection;
-
-/*******************************************
- * Defined role model
- *******************************************/
-@Entity(name = "Role")
-@Table(name = "role_table")
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer role_id;
-
-    private String name;
-
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
-
-    @ManyToMany
+//package com.lukas.ramonas.cms.Model;
+//
+//import javax.persistence.*;
+//import java.util.Collection;
+//
+///*******************************************
+// * Defined role model
+// *******************************************/
+//@Entity(name = "Role")
+//@Table(name = "role_table")
+//public class Role {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int role_id;
+//
+//    private String name;
+//
+//    @ManyToMany(mappedBy = "roles")
+//    private Collection<User> users;
+//
+//    @ManyToMany
 //    @JoinTable(
-//            name = "roles_privileges",
+//            name = "role_privilege_table",
 //            joinColumns = @JoinColumn(
-//                    name = "role_id", referencedColumnName = "id"),
+//                    name = "role_id", referencedColumnName = "role_id"),
 //            inverseJoinColumns = @JoinColumn(
-//                    name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
-}
+//                    name = "privilege_id", referencedColumnName = "privilege_id"))
+//    private Collection<Privilege> privileges;
+//}
