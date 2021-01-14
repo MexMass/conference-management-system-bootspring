@@ -2,13 +2,14 @@ package com.lukas.ramonas.cms.Model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 
 /*******************************************
  * Defined user model
  *******************************************/
 @Entity(name = "User")
-@Table(name = "user_table")
+@Table(name = "user_table", schema = "public")
 public class User {
 
     @Id
@@ -17,25 +18,25 @@ public class User {
 
     private String name;
 
-    @Column(nullable = false, unique = true)
+//    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
 
     private String email;
 
-    private String role;
-
     private boolean confirmed;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "role_table",
-//            joinColumns = @JoinColumn(
-//                    name = "user_id", referencedColumnName = "user_id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "role_id", referencedColumnName = "role_id"))
-//    private Collection<Role> roles;
+    @ManyToMany
+    @JoinTable(
+            name = "role_table",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "role_id"))
+    private Collection<Role> roles;
+
+
 
 /*******************************************
 * Setters and getters
