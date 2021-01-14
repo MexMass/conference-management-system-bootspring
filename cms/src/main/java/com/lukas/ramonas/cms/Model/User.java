@@ -1,35 +1,46 @@
 package com.lukas.ramonas.cms.Model;
 
-import org.hibernate.annotations.Cascade;
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import javax.swing.*;
 import java.util.Collection;
 import java.util.List;
 
+
 /*******************************************
- * Defined entity model
+ * Defined user model
  *******************************************/
 @Entity(name = "User")
-@Table(name = "user_table")
+@Table(name = "user_table", schema = "public")
 public class User {
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer user_id;
+    private int user_id;
 
     private String name;
 
-    @Column(nullable = false, unique = true)
+//    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
 
     private String email;
 
-    private String role;
-
     private boolean confirmed;
+
+    @ManyToMany
+    @JoinTable(
+            name = "role_table",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "role_id"))
+    private Collection<Role> roles;
+
+
+
+/*******************************************
+* Setters and getters
+*******************************************/
 
     public Integer getId() {
         return user_id;
@@ -66,7 +77,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public Boolean getConfirmed() {
         return confirmed;
