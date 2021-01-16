@@ -86,4 +86,7 @@ public class User {
         this.confirmed = confirmed;
     }
 
+    public void setRole(Collection roles) {
+        this.roles = roles;
+    }
 }
