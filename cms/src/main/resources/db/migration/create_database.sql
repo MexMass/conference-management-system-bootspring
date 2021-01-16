@@ -25,6 +25,13 @@ name VARCHAR(32),
 PRIMARY KEY (role_id)
 );
 
+--Table:privilege_table
+CREATE TABLE privilege_table (
+privilege_id SERIAL NOT NULL,
+name VARCHAR(32),
+PRIMARY KEY (privilege_id)
+);
+
 --Table:user_table
 CREATE TABLE user_table (
 user_id SERIAL NOT NULL,
@@ -32,10 +39,24 @@ name VARCHAR(32),
 username VARCHAR(32),
 password VARCHAR(255), -- 255 char lenght to accomodate space for the hashed password
 email VARCHAR(32),
-role INT NOT NULL,
 confirmed BOOLEAN,
-PRIMARY KEY (user_id),
-FOREIGN KEY (role) REFERENCES role_table(role_id)
+PRIMARY KEY (user_id)
+);
+
+--Table:user_role_table
+CREATE TABLE user_role_table (
+user_id INT NOT NULL,
+role_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES user_table(user_id),
+FOREIGN KEY (role_id) REFERENCES role_table(role_id)
+);
+
+--Table:role_privilege_table
+CREATE TABLE role_privilege_table (
+role_id INT NOT NULL,
+privilege_id INT NOT NULL,
+FOREIGN KEY (role_id) REFERENCES role_table(role_id),
+FOREIGN KEY (privilege_id) REFERENCES privilege_table(privilege_id)
 );
 
 --Table:conference_table
