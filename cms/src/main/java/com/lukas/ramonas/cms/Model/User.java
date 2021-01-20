@@ -2,8 +2,6 @@ package com.lukas.ramonas.cms.Model;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
-
 
 /*******************************************
  * Defined user model
