@@ -1,4 +1,4 @@
-package com.lukas.ramonas.cms.config;
+package com.lukas.ramonas.cms.Config;
 
 import com.lukas.ramonas.cms.DAO.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
