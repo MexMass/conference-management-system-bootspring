@@ -1,5 +1,11 @@
 package com.lukas.ramonas.cms.DAO;
 
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -88,4 +94,6 @@ public class UserDto {
     public Boolean getConfirmed() {
         return this.confirmed;
     }
+
 }
+
