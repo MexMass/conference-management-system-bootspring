@@ -2,6 +2,7 @@ package com.lukas.ramonas.cms.Model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 /*******************************************
  * Defined user model
@@ -43,47 +44,50 @@ public class User {
         return user_id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return username;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Boolean getConfirmed() {
-        return confirmed;
+    public String getEmail() {
+        return email;
     }
 
     public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
     }
 
-    public void setRole(Collection roles) {
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setRoles(Collection roles) {
         this.roles = roles;
+    }
+
+    public Collection<Role> getRoles() { return this.roles;
     }
 }
