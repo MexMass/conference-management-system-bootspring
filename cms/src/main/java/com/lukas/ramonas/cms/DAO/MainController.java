@@ -33,7 +33,7 @@ public class MainController {
         n.setUsername(username);
         n.setPassword(password);
         n.setEmail(email);
-        n.setRole(roles);
+        n.setRoles(roles);
         n.setConfirmed(confirmed);
         UserRepository.save(n);
         return "Saved";
