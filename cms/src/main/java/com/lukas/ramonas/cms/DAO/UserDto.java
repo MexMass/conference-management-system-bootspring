@@ -1,16 +1,14 @@
 package com.lukas.ramonas.cms.DAO;
 
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
+import com.lukas.ramonas.cms.Validators.PasswordMatches;
+import com.lukas.ramonas.cms.Validators.ValidEmail;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 // Data Transfer Object to send all of the registration information to backend.
 
+@PasswordMatches
 public class UserDto {
     @NotNull
     @NotEmpty
@@ -25,6 +23,7 @@ public class UserDto {
     private String password;
     private String matchingPassword;
 
+    @ValidEmail
     @NotNull
     @NotEmpty
     private String email;
