@@ -27,4 +27,12 @@ public class Role {
             inverseJoinColumns = @JoinColumn(
                     name = "privilege_id", referencedColumnName = "privilege_id"))
     private Collection<Privilege> privileges;
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Collection<Privilege> getPrivileges() {
+        return this.privileges;
+    }
 }
