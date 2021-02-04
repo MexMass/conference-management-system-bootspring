@@ -7,11 +7,12 @@ import java.util.List;
 /*******************************************
  * Defined user model
  *******************************************/
-@Entity(name = "User")
+@Entity
 @Table(name = "user_table", schema = "public")
 public class User {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int user_id;
 
@@ -25,13 +26,11 @@ public class User {
 
     private boolean confirmed;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "role_table",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"))
+            name = "user_role_table",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Collection<Role> roles;
 
 
