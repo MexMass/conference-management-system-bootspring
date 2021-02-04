@@ -6,7 +6,7 @@ import java.util.Collection;
 /*******************************************
  * Defined role model
  *******************************************/
-@Entity(name = "Role")
+@Entity
 @Table(name = "role_table", schema = "public")
 public class Role {
 
