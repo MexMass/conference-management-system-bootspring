@@ -17,10 +17,10 @@ public class Role {
 
     private String name;
 
-//    @ManyToMany(mappedBy = "roles")
-//    private Collection<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "role_privilege_table",
             joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"),
