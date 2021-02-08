@@ -26,7 +26,7 @@ public class User {
 
     private boolean confirmed;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role_table",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
