@@ -7,6 +7,7 @@ import java.util.Collection;
  * Defined privilege model
  *******************************************/
 @Entity
+@Table(name = "privilege_table", schema = "public")
 public class Privilege {
 
     @Id
