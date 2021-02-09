@@ -28,14 +28,17 @@ public class UserDto {
     @NotEmpty
     private String email;
 
+
+
     @NotNull
     @NotEmpty
     private Boolean confirmed;
 
     // Standard getters and setters
 
-    // Set and get Name
-
+    /*
+    * Set and get Name
+    */
     public void setName(@NotNull @NotEmpty String name) {
         this.name = name;
     }
@@ -44,8 +47,9 @@ public class UserDto {
         return this.name;
     }
 
-    // Set and get Username
-
+    /*
+     * Set and get Username
+     */
     public void setUsername(@NotNull @NotEmpty String username) {
         this.username = username;
     }
@@ -54,8 +58,9 @@ public class UserDto {
         return this.username;
     }
 
-    // Set and get Password
-
+    /*
+     * Set and get Password
+     */
     public void setPassword(@NotNull @NotEmpty String password) {
         this.password = password;
     }
@@ -64,8 +69,9 @@ public class UserDto {
         return this.password;
     }
 
-    // Set and get matchingPassword
-
+    /*
+     * Set and get Matching Password
+     */
     public void setMatchingPassword(@NotNull @NotEmpty String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
@@ -74,8 +80,9 @@ public class UserDto {
         return this.matchingPassword;
     }
 
-    // Set and get Email
-
+    /*
+     * Set and get Email
+     */
     public void setEmail(@NotNull @NotEmpty String email) {
         this.email = email;
     }
@@ -84,8 +91,9 @@ public class UserDto {
         return this.email;
     }
 
-    // Set and get Confirmed
-
+    /*
+     * Set and get Confirmed
+     */
     public void setConfirmed(@NotNull @NotEmpty Boolean confirmed) {
         this.confirmed = confirmed;
     }
