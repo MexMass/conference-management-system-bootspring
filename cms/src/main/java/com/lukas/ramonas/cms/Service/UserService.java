@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Service
 public class UserService implements IUserService {
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Transactional
     @Override
@@ -31,10 +31,13 @@ public class UserService implements IUserService {
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
         user.setRoles(Arrays.asList("ROLE_USER"));
-        return repository.save(user);
+        return userRepository.save(user);
         // the rest of the registration operation
     }
+
+
+
     private boolean emailExist(String email) {
-        return repository.findByEmail(email) != null;
+        return userRepository.findByEmail(email) != null;
     }
 }
