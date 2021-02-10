@@ -24,7 +24,7 @@ public class RegisterController {
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
-        return "register";
+        return "test";
     }
 
     @PostMapping("/register")
