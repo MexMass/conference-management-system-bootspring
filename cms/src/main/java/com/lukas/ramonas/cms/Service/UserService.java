@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-
 @Service
 public class UserService implements IUserService {
     @Autowired
@@ -30,7 +28,8 @@ public class UserService implements IUserService {
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
-        user.setRoles(Arrays.asList("ROLE_USER"));
+        user.setRoles(userDto.getRoles());
+        user.setConfirmed(Boolean.FALSE);
         return userRepository.save(user);
         // the rest of the registration operation
     }
