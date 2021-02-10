@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <title>Spring Framework</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 </head>
 <body>
-<h1> Hello Spring Boot </h1>
+<h1 style="text-align:center">Welcome</h1>
+<div th:align="center">
+    <a th:href="@{/register}"> Go to registration form</a>
+</div>
 </body>
 </html>
