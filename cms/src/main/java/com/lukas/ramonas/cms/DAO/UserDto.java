@@ -1,10 +1,12 @@
 package com.lukas.ramonas.cms.DAO;
 
+import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Validators.PasswordMatches;
 import com.lukas.ramonas.cms.Validators.ValidEmail;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 // Data Transfer Object to send all of the registration information to backend.
 
@@ -28,7 +30,9 @@ public class UserDto {
     @NotEmpty
     private String email;
 
-
+    @NotNull
+    @NotEmpty
+    private Collection<Role> roles;
 
     @NotNull
     @NotEmpty
@@ -89,6 +93,16 @@ public class UserDto {
 
     public String getEmail() {
         return this.email;
+    }
+
+    /*
+     * Set and get Roles
+     */
+    public void setRoles(Collection roles) {
+        this.roles = roles;
+    }
+
+    public Collection<Role> getRoles() { return this.roles;
     }
 
     /*
