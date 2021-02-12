@@ -1,9 +1,9 @@
 package com.lukas.ramonas.cms.Exceptions;
 
+
 public final class UserAlreadyExistException extends RuntimeException {
 
-    // dont really know what serialVersionUID is for so commented out for now
-//    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5861310537366287163L;
 
     public UserAlreadyExistException() {
         super();
@@ -20,4 +20,5 @@ public final class UserAlreadyExistException extends RuntimeException {
     public UserAlreadyExistException(final Throwable cause) {
         super(cause);
     }
+
 }
