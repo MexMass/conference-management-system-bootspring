@@ -5,6 +5,7 @@ import com.lukas.ramonas.cms.DAO.UserRepository;
 import com.lukas.ramonas.cms.Exceptions.UserAlreadyExistException;
 import com.lukas.ramonas.cms.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
@@ -26,9 +30,9 @@ public class UserService implements IUserService {
         User user = new User();
         user.setName(userDto.getName());
         user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
-//        user.setRoles(userDto.getRoles());
+        user.setRoles(userDto.getRoles());
         user.setConfirmed(Boolean.FALSE);
         return userRepository.save(user);
         // the rest of the registration operation
