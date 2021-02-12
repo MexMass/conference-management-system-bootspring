@@ -14,7 +14,7 @@ public class MainController {
 
     @GetMapping("/tete")
     public String showHome(Model model) {
-        return "test";
+        return "register";
     }
 
     @Autowired
