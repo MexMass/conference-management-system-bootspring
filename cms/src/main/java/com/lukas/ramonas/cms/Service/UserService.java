@@ -28,7 +28,7 @@ public class UserService implements IUserService {
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
         user.setEmail(userDto.getEmail());
-        user.setRoles(userDto.getRoles());
+//        user.setRoles(userDto.getRoles());
         user.setConfirmed(Boolean.FALSE);
         return userRepository.save(user);
         // the rest of the registration operation
