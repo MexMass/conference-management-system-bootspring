@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>New user registration</h2>
-            <form action="@{/register}" th:object="${user}" method="post">
+            <form th:action="@{/register}" th:object="${user}" method="post">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
                         <label th:text="#{label.user.name}">name</label>
