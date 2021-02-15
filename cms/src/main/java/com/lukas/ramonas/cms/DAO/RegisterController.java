@@ -24,7 +24,7 @@ public class RegisterController {
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
-        return "test";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -35,11 +35,11 @@ public class RegisterController {
         try {
             User registered = userService.registerNewUserAccount(userDto);
         } catch (UserAlreadyExistException uaeEx) {
-            ModelAndView mav = new ModelAndView();
+            ModelAndView mav = new ModelAndView("register","user",userDto);
             mav.addObject("message", "An account for that username/email already exists.");
             return mav;
         }
 
-        return new ModelAndView("successRegister", "user", userDto);
+        return new ModelAndView("index", "user", userDto);
     }
 }
