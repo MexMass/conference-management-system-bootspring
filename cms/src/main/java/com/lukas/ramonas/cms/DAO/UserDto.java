@@ -32,7 +32,7 @@ public class UserDto {
 
     @NotNull
     @NotEmpty
-    private Collection<Role> roles;
+    private String roles;
 
     @NotNull
     @NotEmpty
@@ -98,11 +98,11 @@ public class UserDto {
     /*
      * Set and get Roles
      */
-    public void setRoles(Collection roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
     }
 
-    public Collection<Role> getRoles() { return this.roles;
+    public String getRoles() { return this.roles;
     }
 
     /*
