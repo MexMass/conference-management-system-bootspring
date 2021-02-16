@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @Service
 public class UserService implements IUserService {
@@ -38,7 +39,7 @@ public class UserService implements IUserService {
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
-        user.setRoles(Arrays.asList(roleRepository.findByName(userDto.getRoles())));
+        user.setRoles(Collections.singletonList(roleRepository.findByName(userDto.getRoles())));
         user.setConfirmed(Boolean.FALSE);
         return userRepository.save(user);
     }
