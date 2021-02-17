@@ -1,12 +1,10 @@
 package com.lukas.ramonas.cms.DAO;
 
-import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Validators.PasswordMatches;
 import com.lukas.ramonas.cms.Validators.ValidEmail;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
 
 // Data Transfer Object to send all of the registration information to backend.
 
@@ -103,17 +101,6 @@ public class UserDto {
     }
 
     public String getRoles() { return this.roles;
-    }
-
-    /*
-     * Set and get Confirmed
-     */
-    public void setConfirmed(@NotNull @NotEmpty Boolean confirmed) {
-        this.confirmed = confirmed;
-    }
-
-    public Boolean getConfirmed() {
-        return this.confirmed;
     }
 
 }
