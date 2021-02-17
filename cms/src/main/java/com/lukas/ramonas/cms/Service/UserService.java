@@ -34,6 +34,11 @@ public class UserService implements IUserService {
                     "There is an account with that email address: "
                             +  userDto.getEmail());
         }
+        if (usernameExist(userDto.getUsername())) {
+            throw new UserAlreadyExistException(
+                    "There is an account with that username: "
+                            +  userDto.getUsername());
+        }
         User user = new User();
         user.setName(userDto.getName());
         user.setUsername(userDto.getUsername());
@@ -48,5 +53,9 @@ public class UserService implements IUserService {
 
     private boolean emailExist(String email) {
         return userRepository.findByEmail(email) != null;
+    }
+
+    private boolean usernameExist(String username) {
+        return userRepository.findByUsername(username) != null;
     }
 }
