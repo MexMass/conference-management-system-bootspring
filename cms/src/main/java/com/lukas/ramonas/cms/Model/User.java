@@ -1,5 +1,7 @@
 package com.lukas.ramonas.cms.Model;
 
+import com.lukas.ramonas.cms.Validators.ValidEmail;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
