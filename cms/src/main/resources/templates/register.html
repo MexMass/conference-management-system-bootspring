@@ -27,12 +27,12 @@
                 <div class="col-md-6 form-group">
                     <label th:text="#{label.user.email}">email</label>
                     <input type="text" id="email" class="form-control" name="email" value="" th:field="*{email}" required="required"/>
-                    <p th:each="error: ${#fields.errors('email')}"
-                       th:text="${error}">Validation error</p>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">ERROR!</span>
+
                 </div>
                 <div class="col-md-6 form-group">
                     <label th:text="#{label.user.password}">password</label>
-                    <input type="text" id="password" class="form-control" name="password" value="" th:field="*{password}" required="required"/>
+                    <input type="password" id="password" class="form-control" name="password" value="" th:field="*{password}" required="required"/>
                     <p th:each="error: ${#fields.errors('password')}"
                        th:text="${error}">Validation error</p>
                 </div>
@@ -49,8 +49,10 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label th:text="#{label.user.confirmPass}">confirm</label>
-                        <input type="text" id="matchingpassword" class="form-control" name="matchingpassword" value="" th:field="*{matchingPassword}" required="required"/>
+                        <input type="password" id="matchingPassword" class="form-control" name="matchingpassword" value="" th:field="*{matchingPassword}" required="required"/>
+                        <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">ERROR!</p>
                     </div>
+
                 <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
                     <p th:text="${message}">Validation error</p>
                 </div>
