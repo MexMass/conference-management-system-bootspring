@@ -6,6 +6,7 @@ import com.lukas.ramonas.cms.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -29,8 +30,15 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ModelAndView registerUserAccount(
-            @ModelAttribute("user") @Valid UserDto userDto,
-            HttpServletRequest request, Errors errors) {
+            @ModelAttribute("user") @Valid UserDto userDto, BindingResult result,
+            HttpServletRequest request ) {
+
+        if(result.hasErrors()){
+            return new ModelAndView("register", "user", userDto);
+//            ModelAndView mav = new ModelAndView("register","user",userDto);
+//            mav.addObject("message", result.getFieldError());
+//            return mav;
+        }
 
         try {
             User registered = userService.registerNewUserAccount(userDto);
