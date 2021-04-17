@@ -32,8 +32,6 @@ public class UserDto {
     @NotEmpty
     private String roles;
 
-    @NotNull
-    @NotEmpty
     private Boolean confirmed;
 
     // Standard getters and setters
