@@ -5,6 +5,7 @@ import com.lukas.ramonas.cms.DAO.UserDto;
 import com.lukas.ramonas.cms.DAO.UserRepository;
 import com.lukas.ramonas.cms.Exceptions.UserAlreadyExistException;
 import com.lukas.ramonas.cms.Model.User;
+import com.lukas.ramonas.cms.Validators.ValidEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
