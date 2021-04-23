@@ -6,6 +6,5 @@ import com.lukas.ramonas.cms.Model.User;
 
 public interface IUserService {
 
-    User registerNewUserAccount(UserDto userDto)
-            throws UserAlreadyExistException;
+    User registerNewUserAccount(UserDto userDto);
 }
