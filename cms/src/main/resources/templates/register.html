@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <title>Register User</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 </head>
 <body>
 <div class="container my-3">
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <h2>New user registration</h2>
+            <div th:align="center">
+                <h2>New user registration</h2>
+            </div>
+            <br></br>
             <form th:action="@{/register}" th:object="${user}" method="post">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
@@ -20,22 +23,21 @@
                         <p th:each="error: ${#fields.errors('name')}"
                            th:text="${error}">Validation error</p>
                     </div>
-                <div class="col-md-6 form-group">
-                    <label th:text="#{label.user.username}">username</label>
-                    <input type="text" id="username" class="form-control" name="name" value="" th:field="*{username}" required="required"/>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label th:text="#{label.user.email}">email</label>
-                    <input type="text" id="email" class="form-control" name="email" value="" th:field="*{email}" required="required"/>
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">ERROR!</span>
-
-                </div>
-                <div class="col-md-6 form-group">
-                    <label th:text="#{label.user.password}">password</label>
-                    <input type="password" id="password" class="form-control" name="password" value="" th:field="*{password}" required="required"/>
-                    <p th:each="error: ${#fields.errors('password')}"
-                       th:text="${error}">Validation error</p>
-                </div>
+                    <div class="col-md-6 form-group">
+                        <label th:text="#{label.user.username}">username</label>
+                        <input type="text" id="username" class="form-control" name="name" value="" th:field="*{username}" required="required"/>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label th:text="#{label.user.email}">email</label>
+                        <input type="text" id="email" class="form-control" name="email" value="" th:field="*{email}" required="required"/>
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">ERROR!</span>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label th:text="#{label.user.password}">password</label>
+                        <input type="password" id="password" class="form-control" name="password" value="" th:field="*{password}" required="required"/>
+                        <p th:each="error: ${#fields.errors('password')}"
+                           th:text="${error}">Validation error</p>
+                    </div>
                     <div class="col-md-6 form-group">
                         <strong>User type</strong>
                         <div class="form-check form-check-inline">
@@ -52,8 +54,7 @@
                         <input type="password" id="matchingPassword" class="form-control" name="matchingpassword" value="" th:field="*{matchingPassword}" required="required"/>
                         <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">ERROR!</p>
                     </div>
-
-                <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
                     <p th:text="${message}">Validation error</p>
                 </div>
             </form>
@@ -62,5 +63,8 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<a class="btn btn-default" th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
+
 </body>
 </html>
