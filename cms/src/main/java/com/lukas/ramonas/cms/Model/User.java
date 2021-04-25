@@ -4,6 +4,7 @@ import com.lukas.ramonas.cms.Validators.ValidEmail;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 /*******************************************
@@ -16,16 +17,21 @@ public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int user_id;
+    private Long user_id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "confirmed")
     private boolean confirmed;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -33,7 +39,7 @@ public class User {
             name = "user_role_table",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
-    private Collection<Role> roles;
+    private Collection<Role> roles = new HashSet<>();
 
 
 
@@ -41,7 +47,7 @@ public class User {
 * Setters and getters
 *******************************************/
 
-    public Integer getId() {
+    public Long getId() {
         return user_id;
     }
 
