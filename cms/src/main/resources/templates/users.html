@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
     <title>Users</title>
     <style>
         /*body,html {height:100%;overflow:hidden;}*/
@@ -36,6 +37,7 @@
 
         .content {
             position: relative;
+
 
         }
 
@@ -120,6 +122,7 @@
 
 <div class="hero">
     <div class="content">
+        <div  th:if="${message != null}" th:align="center" class="alert alert-info" th:utext="${message}">message</div>
         <div>
             <h1>Welcome to the users section</h1>
             <h2>List of users:</h2>
@@ -134,7 +137,6 @@
                     <th>Confirmed</th>
                     <th>Option</th>
                 </tr>
-
                 <tr th:each="User : ${userList}">
                     <td th:text="${User.id}">Id</td>
                     <td th:text="${User.name}">Name</td>
@@ -143,8 +145,11 @@
                     <td th:text="${User.roles}">Role</td>
                     <td th:text="${User.confirmed}">Confirmed</td>
                     <td>
-<!--                        <a th:href="|@{/delete/${User.id}}|" onclick="return confirm('Are you sure?')">Delete</a>-->
-                        <a th:href="@{delete/__${User.id}__}" class="btn btn-danger">Delete</a>
+<!--                        This below is for testing, I've set ROLE_STUDENT which should not appear since I am logged in as ROLE_ADMIN-->
+                        <div sec:authorize="hasRole('ROLE_STUDENT')">
+                        <a  th:href="@{delete/__${User.id}__}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </div>
+                        <a th:href="@{update/__${User.id}__}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Disable/Enable</a>
                     </td>
                 </tr>
             </table>
