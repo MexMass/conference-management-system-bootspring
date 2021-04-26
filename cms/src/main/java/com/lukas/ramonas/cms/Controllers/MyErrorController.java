@@ -32,6 +32,6 @@ public class MyErrorController implements ErrorController {
     @Override
     public String getErrorPath() {
         return null;
-    }
+    } // Method is deprecated so is not used. Return null.
 
 }
