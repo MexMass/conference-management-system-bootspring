@@ -1,10 +1,8 @@
 package com.lukas.ramonas.cms.Service;
 
 import com.lukas.ramonas.cms.DAO.UserDto;
-import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Model.User;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +17,8 @@ public interface IUserService {
     List<User> findAllByRoles(String roles);
 
     User findByRoles(String roles);
+
+    User findByUsername(String username);
 
     public void delete(Long id);
 
