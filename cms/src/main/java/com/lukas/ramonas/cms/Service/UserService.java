@@ -4,6 +4,7 @@ import com.lukas.ramonas.cms.DAO.RoleRepository;
 import com.lukas.ramonas.cms.DAO.UserDto;
 import com.lukas.ramonas.cms.DAO.UserRepository;
 import com.lukas.ramonas.cms.Exceptions.UserAlreadyExistException;
+import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -57,8 +58,30 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<User> findAllByRoles(String roles){
+        return userRepository.findAllByRoles(roleRepository.findByName(roles));
+    }
+
+    @Override
+    public User findByRoles(String roles) {
+        return userRepository.findByRoles(roleRepository.findByName(roles));
+    }
+
+    @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User updateConfirmed(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.get().getConfirmed() == true)
+        {
+            user.get().setConfirmed(false);
+        } else {
+            user.get().setConfirmed(true);
+        }
+        return userRepository.save(user.get());
     }
 
     @Override
@@ -66,6 +89,8 @@ public class UserService implements IUserService {
 
         return userRepository.findById(id);
     }
+
+
 
     private boolean emailExist(String email) {
         return userRepository.findByEmail(email) != null;
