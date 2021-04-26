@@ -22,9 +22,6 @@ public class AdminController {
     @Autowired
     private IUserService userService;
 
-    @Autowired
-    private com.lukas.ramonas.cms.DAO.UserRepository UserRepository;     // This means to get the bean called user_tableRepository
-
     @GetMapping(path="/adminIndex")
     public String showAdminIndex(){
         return "adminIndex";
