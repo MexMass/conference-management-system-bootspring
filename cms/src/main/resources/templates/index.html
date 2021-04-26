@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 <head>
     <meta charset="UTF-8" />
-    <title>Welcome</title>
+    <title>Home</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 </head>
 <body>
-<h1 style="text-align:center">Welcome</h1>
+<h1 style="text-align:center">Welcome homie</h1>
 <div th:align="center">
-    <a th:href="@{/register}"> Go to registration form</a>
+    <a class="btn btn-default" th:href="@{/perform_logout}" th:text="#{label.pages.logout}">Logout</a>
 </div>
 </body>
 </html>
