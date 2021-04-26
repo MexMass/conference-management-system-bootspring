@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<head>
+    <meta charset="UTF-8">
+    <title>500</title>
+</head>
+<style>
+    .center {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="center">
+        <h1 th:utext="#{message.error.500}">Error</h1>
+            <div class="text-center">
+                <span>The server has encountered an unexpected condition</span>
+                <br> </br>
+                <p class="btn btn-default" th:href="@{/}" th:utext="#{label.form.home}">homepage</p>
+            </div>
+    </div>
+</div>
+</body>
+</html>

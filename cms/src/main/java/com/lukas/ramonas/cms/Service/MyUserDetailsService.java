@@ -31,7 +31,7 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(
                     "No user found with username: "+ username);
         }
-        boolean enabled = true;
+        boolean enabled = user.getConfirmed(); // Check if user is enabled or not. Checks the "confirmed" column in the databse.
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;

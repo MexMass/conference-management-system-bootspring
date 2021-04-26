@@ -10,8 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 @Service
 public class UserService implements IUserService {
@@ -49,7 +48,24 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public List<User> findAll() {
 
+        var users = (List<User>) userRepository.findAll();
+
+        return users;
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+
+        return userRepository.findById(id);
+    }
 
     private boolean emailExist(String email) {
         return userRepository.findByEmail(email) != null;

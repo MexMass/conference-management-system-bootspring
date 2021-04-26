@@ -1,12 +1,13 @@
-package com.lukas.ramonas.cms.DAO;
+package com.lukas.ramonas.cms.Controllers;
 
+import com.lukas.ramonas.cms.DAO.UserDto;
 import com.lukas.ramonas.cms.Exceptions.UserAlreadyExistException;
 import com.lukas.ramonas.cms.Model.User;
 import com.lukas.ramonas.cms.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,8 +30,12 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ModelAndView registerUserAccount(
-            @ModelAttribute("user") @Valid UserDto userDto,
-            HttpServletRequest request, Errors errors) {
+            @ModelAttribute("user") @Valid UserDto userDto, BindingResult result,
+            HttpServletRequest request ) {
+
+        if(result.hasErrors()){
+            return new ModelAndView("register", "user", userDto);
+        }
 
         try {
             User registered = userService.registerNewUserAccount(userDto);
@@ -40,6 +45,8 @@ public class RegisterController {
             return mav;
         }
 
-        return new ModelAndView("index", "user", userDto);
+        ModelAndView mav = new ModelAndView("login");
+        mav.addObject("message", "Succesfully registered new user. Please keep in mind that your new account must be verified by a teacher or admin before you can login.");
+        return mav;
     }
 }

@@ -14,6 +14,13 @@ public class PasswordMatchesValidator
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){
         UserDto user = (UserDto) obj;
-        return user.getPassword().equals(user.getMatchingPassword());
+//        return user.getPassword().equals(user.getMatchingPassword());
+        boolean isValid = user.getPassword().equals(user.getMatchingPassword());
+        if(!isValid){
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
+                    .addPropertyNode( "matchingPassword" ).addConstraintViolation(); // Bind the validation result to 'matchingPassword' attribute
+        }
+        return isValid;
     }
 }

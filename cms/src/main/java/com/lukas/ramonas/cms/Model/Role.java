@@ -34,4 +34,9 @@ public class Role {
     public Collection<Privilege> getPrivileges() {
         return this.privileges;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
