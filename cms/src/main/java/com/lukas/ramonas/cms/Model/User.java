@@ -34,7 +34,7 @@ public class User {
     @Column(name = "confirmed")
     private boolean confirmed;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role_table",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
@@ -43,9 +43,9 @@ public class User {
 
 
 
-/*******************************************
-* Setters and getters
-*******************************************/
+    /*******************************************
+     * Setters and getters
+     *******************************************/
 
     public Long getId() {
         return user_id;
