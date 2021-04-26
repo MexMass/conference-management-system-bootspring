@@ -1,10 +1,9 @@
 package com.lukas.ramonas.cms.Service;
 
-import com.lukas.ramonas.cms.DAO.RoleRepository;
+import com.lukas.ramonas.cms.DAO.Repositories.RoleRepository;
 import com.lukas.ramonas.cms.DAO.UserDto;
-import com.lukas.ramonas.cms.DAO.UserRepository;
+import com.lukas.ramonas.cms.DAO.Repositories.UserRepository;
 import com.lukas.ramonas.cms.Exceptions.UserAlreadyExistException;
-import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,6 +57,12 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public Optional<User> findById(Long id) {
+
+        return userRepository.findById(id);
+    }
+
+    @Override
     public List<User> findAllByRoles(String roles){
         return userRepository.findAllByRoles(roleRepository.findByName(roles));
     }
@@ -66,6 +71,11 @@ public class UserService implements IUserService {
     public User findByRoles(String roles) {
         return userRepository.findByRoles(roleRepository.findByName(roles));
     }
+
+    @Override
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
+    };
 
     @Override
     public void delete(Long id) {
@@ -83,14 +93,6 @@ public class UserService implements IUserService {
         }
         return userRepository.save(user.get());
     }
-
-    @Override
-    public Optional<User> findById(Long id) {
-
-        return userRepository.findById(id);
-    }
-
-
 
     private boolean emailExist(String email) {
         return userRepository.findByEmail(email) != null;
