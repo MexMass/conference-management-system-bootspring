@@ -1,4 +1,4 @@
-package com.lukas.ramonas.cms.DAO;
+package com.lukas.ramonas.cms.DAO.Repositories;
 
 import com.lukas.ramonas.cms.Model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
