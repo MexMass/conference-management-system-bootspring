@@ -1,6 +1,6 @@
 package com.lukas.ramonas.cms.Service;
 
-import com.lukas.ramonas.cms.DAO.UserRepository;
+import com.lukas.ramonas.cms.DAO.Repositories.UserRepository;
 import com.lukas.ramonas.cms.Model.Role;
 import com.lukas.ramonas.cms.Model.User;
 
