@@ -112,8 +112,11 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-    <a th:href="@{/admin/adminIndex}" class="active">Home</a>
-    <a th:href="@{/admin/users}">Users</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/adminIndex}" class="active">Home</a>
+    <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/teacherIndex}" class="active">Home</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/users}">Users</a>
+    <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/users}">Users</a>
+    <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/configure}">Configure</a>
     <a th:href="@{/perform_logout}" >Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -145,10 +148,7 @@
                     <td th:text="${User.roles}">Role</td>
                     <td th:text="${User.confirmed}">Confirmed</td>
                     <td>
-<!--                        This below is for testing, I've set ROLE_STUDENT which should not appear since I am logged in as ROLE_ADMIN-->
-                        <div sec:authorize="hasRole('ROLE_STUDENT')">
-                        <a  th:href="@{delete/__${User.id}__}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-                        </div>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{delete/__${User.id}__}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                         <a th:href="@{update/__${User.id}__}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Disable/Enable</a>
                     </td>
                 </tr>
@@ -166,20 +166,6 @@
             x.className = "topnav";
         }
     }
-</script>
-
-<script type="text/javascript">
-    $(function(){
-        var $page = jQuery.url.attr("file");
-        $('ul.navigation li a').each(function(){
-            var $href = $(this).attr('href');
-            if ( ($href == $page) || ($href == '') ) {
-                $(this).addClass('on');
-            } else {
-                $(this).removeClass('on');
-            }
-        });
-    });
 </script>
 
 </body>
