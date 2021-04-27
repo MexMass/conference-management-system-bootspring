@@ -112,6 +112,7 @@
 <div class="topnav" id="myTopnav">
     <a th:href="@{/teacher/teacherIndex}" class="active">Home</a>
     <a th:href="@{/teacher/users}">Users</a>
+    <a th:href="@{/teacher/configure}">Configure</a>
     <a th:href="@{/perform_logout}" >Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -136,20 +137,6 @@
             x.className = "topnav";
         }
     }
-</script>
-
-<script type="text/javascript">
-    $(function(){
-        var $page = jQuery.url.attr("file");
-        $('ul.navigation li a').each(function(){
-            var $href = $(this).attr('href');
-            if ( ($href == $page) || ($href == '') ) {
-                $(this).addClass('on');
-            } else {
-                $(this).removeClass('on');
-            }
-        });
-    });
 </script>
 
 </body>
