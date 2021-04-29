@@ -30,21 +30,19 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ModelAndView registerUserAccount(
-            @ModelAttribute("user") @Valid UserDto userDto, BindingResult result,
-            HttpServletRequest request ) {
+            @ModelAttribute("user") @Valid UserDto userDto, BindingResult result) {
 
         if(result.hasErrors()){
             return new ModelAndView("register", "user", userDto);
         }
 
         try {
-            User registered = userService.registerNewUserAccount(userDto);
+            userService.registerNewUserAccount(userDto);
         } catch (UserAlreadyExistException uaeEx) {
             ModelAndView mav = new ModelAndView("register","user",userDto);
             mav.addObject("message", uaeEx.getMessage());
             return mav;
         }
-
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("message", "Succesfully registered new user. Please keep in mind that your new account must be verified by a teacher or admin before you can login.");
         return mav;
