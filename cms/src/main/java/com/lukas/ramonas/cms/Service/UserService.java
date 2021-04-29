@@ -50,10 +50,7 @@ public class UserService implements IUserService {
 
     @Override
     public List<User> findAll() {
-
-        var users = (List<User>) userRepository.findAll();
-
-        return users;
+        return userRepository.findAll();
     }
 
     @Override
