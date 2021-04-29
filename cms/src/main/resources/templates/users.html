@@ -116,6 +116,7 @@
     <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/teacherIndex}" class="active">Home</a>
     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/users}">Users</a>
     <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/users}">Users</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/conferences}">Conferences</a>
     <a sec:authorize="hasRole('ROLE_TEACHER')" th:href="@{/teacher/configure}">Configure</a>
     <a th:href="@{/perform_logout}" >Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
