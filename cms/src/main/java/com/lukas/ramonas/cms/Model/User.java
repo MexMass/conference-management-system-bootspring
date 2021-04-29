@@ -41,11 +41,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Collection<Role> roles = new HashSet<>();
 
-
-
-    /*******************************************
-     * Setters and getters
-     *******************************************/
+/*******************************************
+ * Setters and getters
+ *******************************************/
 
     public Long getId() {
         return user_id;
@@ -96,5 +94,10 @@ public class User {
     }
 
     public Collection<Role> getRoles() { return this.roles;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
