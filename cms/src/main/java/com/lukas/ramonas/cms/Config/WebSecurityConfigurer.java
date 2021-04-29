@@ -73,15 +73,15 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     }
 
-    public void addViewControllers(ViewControllerRegistry registry) {
-        // forward requests to /admin and /user to their index.html
-        registry.addViewController("/admin").setViewName(
-                "forward:/admin/adminIndex");
-        registry.addViewController("/student").setViewName(
-                "forward:/student/studentIndex");
-        registry.addViewController("/teacher").setViewName(
-                "forward:/teacher/teacherIndex");
-    }
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        // forward requests to /admin and /user to their index.html
+//        registry.addViewController("/admin").setViewName(
+//                "forward:/admin/adminIndex");
+//        registry.addViewController("/student").setViewName(
+//                "forward:/student/studentIndex");
+//        registry.addViewController("/teacher").setViewName(
+//                "forward:/teacher/teacherIndex");
+//    }
 
 }
 
