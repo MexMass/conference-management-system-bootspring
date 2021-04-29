@@ -3,8 +3,10 @@ package com.lukas.ramonas.cms.DAO;
 import com.lukas.ramonas.cms.Validators.PasswordMatches;
 import com.lukas.ramonas.cms.Validators.ValidEmail;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 // Data Transfer Object to send all of the registration information to backend.
 
@@ -12,20 +14,24 @@ import javax.validation.constraints.NotNull;
 public class UserDto {
     @NotNull
     @NotEmpty
+    @Size(max = 32)
     private String name;
 
     @NotNull
     @NotEmpty
+    @Size(max = 32)
     private String username;
 
     @NotNull
     @NotEmpty
+    @Size(max = 255)
     private String password;
     private String matchingPassword;
 
     @ValidEmail
     @NotNull
     @NotEmpty
+    @Size(max = 32)
     private String email;
 
     @NotNull
