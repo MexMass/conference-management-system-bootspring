@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
@@ -113,6 +113,7 @@
 <div class="topnav" id="myTopnav">
     <a th:href="@{/admin/adminIndex}" class="active">Home</a>
     <a th:href="@{/admin/users}">Users</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/conferences}">Conferences</a>
     <a th:href="@{/perform_logout}" >Logout</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
